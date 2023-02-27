@@ -5,9 +5,46 @@ namespace AlgoritmsAndDataStructures
     internal class Program
     {
         public static void Main(string[] args)
-        { 
-            IterateOver(new []{1,2,3}); 
+        {
+
+            Console.WriteLine("Hello");
             Console.Read();
+        }
+
+        private static void ArrayTimeComplexity(object[] array) {
+
+            Console.WriteLine(array[0]);
+            
+            int length = array.Length;
+            object elementINeedToFind = new object();
+            
+            for (int i=0; i < length; i++) {
+                if (array[i] == elementINeedToFind)
+                {
+                    Console.WriteLine("Exist/Found");
+                }
+
+            }
+            
+            //add to a full array
+            var bigArray = new int[length * 2];
+            Array.Copy(array, bigArray, length);
+            bigArray[length + 1] = 10; 
+            
+            //add to the end where there's some space
+            array[length - 1] = 10;
+            
+        }
+
+        private static void RemoveAt(object[] array, int index)
+        {
+            var newArray = new object[array.Length - 1];
+            
+            //copy before index
+            Array.Copy(array, 0, newArray, 0,index);
+            
+            //copy after index
+            Array.Copy(array, index+1, newArray, index, array.Length-1-index);
         }
 
         private static unsafe void IterateOver(int[] array)
@@ -37,14 +74,14 @@ namespace AlgoritmsAndDataStructures
 
             for (int i = 0; i < a3.Length; i++)
             {
-                Console.WriteLine($"{i}");
+                Console.WriteLine("{i}");
             }
 
             Console.WriteLine();
 
             foreach (var el in a4)
             {
-                Console.WriteLine($"{el}");
+                Console.WriteLine("{el}");
             }
             
             Console.WriteLine();
@@ -64,8 +101,8 @@ namespace AlgoritmsAndDataStructures
             myArray.SetValue(3,3);
             myArray.SetValue(4,4);
             
-            Console.WriteLine($"Starting index: {myArray.GetLowerBound(0)}");
-            Console.WriteLine($"Ending index: {myArray.GetUpperBound(0)}");
+            Console.WriteLine("Starting index: {myArray.GetLowerBound(0)}");
+            Console.WriteLine("Ending index: {myArray.GetUpperBound(0)}");
         }
         
         private static void MultiDimArrays()
@@ -78,7 +115,7 @@ namespace AlgoritmsAndDataStructures
             {
                 for (int j = 0; j < r2.GetLength(1); j++)
                 {
-                    Console.WriteLine($"{r2[i,j]}");
+                    Console.WriteLine("{r2[i,j]}");
                 }
                 Console.WriteLine();
             }
